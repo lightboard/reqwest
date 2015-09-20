@@ -220,6 +220,8 @@
     // if the factory returns null, fall-back to ours
     http = (o.xhr && o.xhr(o)) || xhr(o)
 
+    if (o.progress) { http.addEventListener('progress', o.progress); }
+
     http.open(method, url, o['async'] === false ? false : true)
     setHeaders(http, o)
     setCredentials(http, o)
